@@ -53,13 +53,13 @@ class OverviewViewModel : ViewModel() {
         MarsApi.retrofitService.getProperties().enqueue(
             object: Callback<String> {
                 override fun onFailure(call: Call<String>, t: Throwable) {
-                    TODO("not implemented")
+                    _response.value = "Failure: " + t.message
                 }
 
                 override fun onResponse(call: Call<String>,
                                         response: Response<String>
                 ) {
-                    TODO("not implemented")
+                    _response.value = response.body()
                 }
             })
     }
